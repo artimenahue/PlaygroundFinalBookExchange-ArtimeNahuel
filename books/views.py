@@ -15,7 +15,7 @@ def add_book(request):
         form = AddBookForm(request.POST, request.FILES)
         if form.is_valid():
             book = form.save(commit=False)
-            book.user = request.user  # Asigna el usuario actual
+            book.user = request.user  
             book.save()
             return redirect('book_list')
     else:
@@ -43,13 +43,12 @@ def request_exchange(request, pk):
     book = get_object_or_404(Book, pk=pk)
 
     if request.method == 'POST':
-        form = ExchangeRequestForm(user=request.user)  # Pasa el usuario directamente aquí
+        form = ExchangeRequestForm(user=request.user) 
         if form.is_valid():
             message = form.cleaned_data['message']
             book_to_exchange_id = form.cleaned_data['book_to_exchange']
             book_to_exchange = get_object_or_404(Book, pk=book_to_exchange_id)
             ExchangeRequest.objects.create(book=book, requester=request.user, book_to_exchange=book_to_exchange, message=message)
-            # Realiza cualquier otra acción necesaria, como enviar notificaciones por correo electrónico
             return redirect('exchange_requested')
 
     else:
