@@ -1,0 +1,23 @@
+{% extends 'books/base.html' %}
+{% load static %}
+{% block content %}
+    <h1>Libros Publicados para Intercambio</h1>
+
+    <hr>
+    <div class="row">
+        {% for book in books %}
+            <div class="col-md-3 mb-3">
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="{{ book.photo.url }}" class="card-img-top img-fluid w-100" alt="{{ book.title }}">
+                    </div>    
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text">{{ book.description }}</p>
+                        <a href="{% url 'book_detail' book.id %}" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

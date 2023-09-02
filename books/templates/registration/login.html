@@ -1,0 +1,27 @@
+{% extends 'books/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">{{ block.super }}</div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="{{ form.username.id_for_label }}">Usuario:</label>
+                            <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.name }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.password.id_for_label }}">Contraseña:</label>
+                            <input type="password" class="form-control" id="{{ form.password.id_for_label }}" name="{{ form.password.name }}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

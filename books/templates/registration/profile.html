@@ -1,0 +1,20 @@
+{% extends 'books/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Mi Perfil</h2>
+                    <p class="card-text">Acerca de mí: Hola que tal! Mi nombre es Nahuel y tengo un trayecto de 14 años en el área de IT.
+                        He desempeñado cargos de Desktop Support, Diseño Grafico, Desarrollo web, etc. Actualmente estoy aprendiendo el lenguaje de programación Python y el Framework Django. Gracias por visitar mi página.</p>
+                    <p>Ahora puedes comenzar a publicar tus libros para intercambiar.</p>
+                    <a href="{% url 'book_list' %}" class="btn btn-primary">Ir a Libros Publicados</a>
+                    <a href="{% url 'view_exchange_requests' %}" class="btn btn-primary">Ver Solicitudes de Intercambio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

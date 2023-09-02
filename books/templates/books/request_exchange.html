@@ -1,0 +1,20 @@
+{% extends 'books/base.html' %}
+
+{% block content %}
+    <h2 class="text-center">Solicitar Intercambio de "{{ book.title }}"</h2>
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 0vh;">
+        <form method="post" style="max-width: 400px;">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="{{ form.book_to_exchange.id_for_label }}" class="form-label">Libro para Intercambiar:</label>
+                {{ form.book_to_exchange }}
+                {{ form.book_to_exchange.errors }}
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+            </div>
+        </form>
+    </div>
+    <a href="{% url 'book_list' %}" class="btn btn-secondary">Volver a la lista</a>
+{% endblock %}
+

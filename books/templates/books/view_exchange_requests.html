@@ -1,0 +1,38 @@
+{% extends 'books/base.html' %}
+
+{% block content %}
+    <h2 class="text-center">Solicitudes de Intercambio</h2>
+    <div class="container">
+        {% if exchange_requests %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Libro a Intercambiar</th>
+                        <th>Publicado por</th>
+                        <th>Mensaje</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in exchange_requests %}
+                        <tr>
+                            <td>{{ request.book_to_exchange.title }}</td>
+                            <td>{{ request.book_to_exchange.user.username }}</td>
+                            <td>{{ request.message }}</td>
+                            <td>
+                                <!-- Agrega aquí cualquier acción que desees, como aceptar o rechazar la solicitud -->
+                                <a href="#">Aceptar</a> | <a href="#">Rechazar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No tienes solicitudes de intercambio disponibles en este momento.</p>
+        {% endif %}
+    </div>
+    <a href="{% url 'profile' %}" class="btn btn-secondary">Volver a mi perfil</a>
+{% endblock %}
+
+
+
